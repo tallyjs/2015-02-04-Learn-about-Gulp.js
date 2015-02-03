@@ -46,9 +46,7 @@ gulp.task('build-js', function () {
         ])
         .pipe(concat('app.js'))
         .pipe(uglify())
-        .pipe(rename(function (path) {
-            path.extname = '.min.js';
-        }))
+        .pipe(rename('app.min.js'))
         .pipe(gulp.dest('build'));
 
 });
