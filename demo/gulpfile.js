@@ -1,6 +1,4 @@
 'use strict';
-// autoprefix
-// imagemin
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
@@ -11,11 +9,14 @@ var sourcemaps = require('gulp-sourcemaps');
 var filter = require('gulp-filter');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
+var autoprefixer = require('gulp-autoprefixer');
+var minifyCSS = require('gulp-minify-css');
 
 
 gulp.task('dev', [
     'browser-sync',
-    'watch-js'
+    'watch-js',
+    'watch-css'
 ]);
 
 gulp.task('browser-sync', function () {
@@ -59,6 +60,23 @@ gulp.task('build-js', function () {
         .pipe(uglify())
         .pipe(rename('app.min.js'))
         .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('build'));
+
+});
+
+gulp.task('watch-css', ['build-css'], function () {
+    gulp.watch('./css/app.css', ['build-css']);
+});
+
+gulp.task('build-css', function () {
+
+    return gulp.src([
+            'bower_components/todomvc-common/base.css',
+            './css/app.css'
+        ])
+        .pipe(concat('app.min.css'))
+        .pipe(autoprefixer()) // Good settings: http://analog-ni.co/my-css-autoprefixer-settings-for-ie9-and-up
+        .pipe(minifyCSS())
         .pipe(gulp.dest('build'));
 
 });
