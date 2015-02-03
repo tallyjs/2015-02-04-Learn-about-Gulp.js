@@ -8,6 +8,7 @@ var browserSync = require('browser-sync');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('dev', [
@@ -44,9 +45,11 @@ gulp.task('build-js', function () {
             'bower_components/director/build/director.js',
             './js/app.js'
         ])
+        .pipe(sourcemaps.init())
         .pipe(concat('app.js'))
         .pipe(uglify())
         .pipe(rename('app.min.js'))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('build'));
 
 });
