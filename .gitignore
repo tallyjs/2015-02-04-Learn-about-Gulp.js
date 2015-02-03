@@ -1,3 +1,4 @@
 .idea
 demo/bower_components
+demo/build
 demo/node_modules
