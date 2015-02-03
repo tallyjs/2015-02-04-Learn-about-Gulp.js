@@ -1,8 +1,5 @@
 'use strict';
-// uglify
-// concatenate
 // autoprefix
-// watch
 // jshint
 // imagemin
 
@@ -10,6 +7,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
+var concat = require('gulp-concat');
 
 
 gulp.task('dev', [
@@ -39,7 +37,14 @@ gulp.task('watch-js', ['build-js'], function () {
 
 gulp.task('build-js', function () {
 
-    gulp.src('./js/app.js')
+    gulp.src([
+            'bower_components/todomvc-common/base.js',
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/handlebars/handlebars.js',
+            'bower_components/director/build/director.js',
+            './js/app.js'
+        ])
+        .pipe(concat('app.js'))
         .pipe(uglify())
         .pipe(rename(function (path) {
             path.extname = '.min.js';
