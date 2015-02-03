@@ -1,0 +1,11 @@
+{
+  "name": "gulp-demo",
+  "version": "1.0.0",
+  "description": "Getting started with Gulp.js",
+  "license": "CC0",
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^2.0.0-rc4",
+    "gulp": "^3.8.10"
+  }
+}
