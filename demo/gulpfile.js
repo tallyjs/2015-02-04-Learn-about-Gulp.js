@@ -10,7 +10,11 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 
 
-gulp.task('dev', function () {
+gulp.task('dev', [
+    'browser-sync'
+]);
+
+gulp.task('browser-sync', function () {
 
     browserSync({
         server: {
