@@ -2,11 +2,56 @@
 
 Repo complementing the [TallyJS meetup](http://www.meetup.com/TallyJS/events/219721266/) on the 4th of February 2015.
 
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tallyjs/tallyjs-follow-up) to do some follow-up talking. :)
+
 ---
 
 [Gulp.js](http://gulpjs.com) is a task runner for the JavaScript engine [node.js](http://nodejs.org) which is particularly well suited for building, optimizing, and packaging web assets - HTML, CSS, JavaScript, images, fonts etc. Although it is based on node.js it does not demand you to use node.js as your web server. So it is a good solution for any web project with whatever server infrastructure you choose to use.
 
-## A demo
+## A demo to get you started with Gulp
+
+Setup the demo with the following steps:
+
+1. First install [node.js](http://nodejs.org/download/). This will install the command line tools `node` which is the execution environment for JavaScript code and `npm` which is the package manager to download third party libraries.
+2. [Download](https://github.com/tallyjs/2015-02-04-Learn-about-Gulp.js/archive/master.zip) this repository to your computer and extract it somewhere.
+3. Open the command line and `cd` into the `.../2015-02-04-Learn-about-Gulp.js-master/demo/` folder.
+4. Execute `npm install -g bower`. If it fails for some reason try `npm install bower`. This install the Bower package manager which is used for third party libraries in the browser.
+5. Execute `bower install` or `./node_modules/.bin/bower install` if the first command in step 4 failed. You just installed jQuery etc.
+6. Execute `npm install -g gulp` to install the `gulp` command line tool. If it fails for some reason just skip this step.
+7. Execute `npm install`. This install all required libraries needed to run the Gulp workflow.
+8. Execute `gulp dev` or `./node_modules/.bin/gulp dev` if step 6 failed.
+
+You should now see the following output:
+
+```
+[12:08:39] Using gulpfile ~/Downloads/2015-02-04-Learn-about-Gulp.js-master/demo/gulpfile.js
+[12:08:39] Starting 'browser-sync'...
+[12:08:41] Finished 'browser-sync' after 1.83 s
+[12:08:41] Starting 'build-js'...
+[12:08:41] Starting 'build-css'...
+[BS] Access URLs:
+ ----------------------------------
+       Local: http://localhost:3000
+    External: http://10.0.0.24:3000
+ ----------------------------------
+          UI: http://localhost:3001
+ UI External: http://10.0.0.24:3001
+ ----------------------------------
+[BS] Serving files from: ./
+[12:08:41] Finished 'build-css' after 188 ms
+[12:08:41] Starting 'watch-css'...
+[12:08:41] Finished 'watch-css' after 1.57 ms
+[BS] Reloading Browsers...
+[12:08:44] Finished 'build-js' after 3.18 s
+[12:08:44] Starting 'watch-js'...
+[12:08:44] Finished 'watch-js' after 755 μs
+[12:08:44] Starting 'dev'...
+[12:08:44] Finished 'dev' after 6.68 μs
+```
+
+A browser window should open automatically with the url http://localhost:3000 loaded. This is the demo app which just got built by the Gulp workflow.
+
+Please have a look at the [gulpfile.js](https://github.com/tallyjs/2015-02-04-Learn-about-Gulp.js/blob/master/demo/gulpfile.js) to see what is done in the build workflow.
 
 ## Advanced examples
 
